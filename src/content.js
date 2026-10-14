@@ -17,7 +17,7 @@ export default {
   "phone": "021 344 967",
   "email": "jackson@harthaulage.co.nz",
   "address": "125 Fred Taylor Drive, Westgate, Auckland, New Zealand",
-  "home_seo_title": "Hart Haulage Ltd",
+  "home_seo_title": "Heavy Haulage Auckland | Hart Haulage",
   "home_seo_description": "Hart Haulage Ltd — cartage and haulage services. Get in touch for a quote.",
   "about_seo_title": "Our Story | Hart Haulage Ltd",
   "about_seo_description": "Who we are and what we stand for at Hart Haulage Ltd.",
