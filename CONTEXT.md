@@ -1,5 +1,5 @@
 # HartHaulage — working context
-_Last wrapped: 2026-08-23 · live, CMS-wired_
+_Last wrapped: 2026-10-16 · live, CMS-wired_
 
 ## What this is
 Hart Haulage's site (transport/haulage). Live and CMS-wired, but built before the
@@ -79,5 +79,12 @@ that could only ever fail in production.
 - `Home - Stats` uses a **responsive gap** (`gap-6 md:gap-0 md:divide-x`), so
   `--rb-gap` has to track per breakpoint or the row comes up short at md.
 
+## Real 404s (2026-10-16)
+Google flagged "alternate page with proper canonical tag": the `/* /index.html 200` fallback served the
+HOME page for any stray address. Now a prerendered noindex `404` route + `/* /404.html 404` (verified live:
+real pages 200, stray 404). Lazar pressed "Validate fix" in Search Console. Also 16 Oct: home title is
+"Heavy Haulage Auckland | Hart Haulage" and 6 Google listings were published from the admin.
+
 ## Session log (brief, newest first)
+- 2026-10-16: real 404s shipped (Search Console fix validated); listings + title published via CMS.
 - 2026-08-23: repeater conversion (held on branch); value drift adopted; CONTEXT created.
