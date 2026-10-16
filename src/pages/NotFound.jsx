@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
+import { Head } from 'vite-react-ssg'
 
 // 404. Site chrome rather than client copy, so it carries no data-cms fields —
 // cms-check excludes notfound/404 files from the coverage scan for that reason.
 // Styled from the same tokens as the rest of the site.
 export default function NotFound() {
+  // Prerendered as 404.html and served with a real 404 status, so Google drops a
+  // stray address instead of reading it as a copy of the home page.
   return (
+    <>
+    <Head>
+      <title>Page not found</title>
+      <meta name="robots" content="noindex" />
+    </Head>
     <section className="bg-charcoal-dark flex min-h-[60vh] flex-col items-center justify-center px-4 py-20 text-center">
       <p className="text-pink font-heading font-black text-6xl leading-none">404</p>
       <h1 className="font-heading font-black uppercase text-white text-3xl md:text-4xl tracking-wide mt-4">
@@ -20,5 +28,6 @@ export default function NotFound() {
         Back to home
       </Link>
     </section>
+    </>
   )
 }
