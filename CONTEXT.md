@@ -50,10 +50,7 @@ script that fetched CMS content from `http://localhost:3000` — a pre-bridge re
 that could only ever fail in production.
 
 ## Still outstanding
-- [ ] **Lazar to review on localhost** (`npm run dev` — note it is `vite-react-ssg
-      dev` now) before this merges. Nothing should look different.
-- [ ] **Merge to `main`** = one production deploy. Both riders ride it.
-- [ ] **CMS force-overwrite re-scan AFTER merging** — three new fields
+- [ ] **(Merged as d540d88.) Check the CMS rescan happened:** — three new fields
       (`Footer - Navigation - Heading`, `Terms - Document - Download Label`,
       `Terms - CTA - Body`) will not appear in the dashboard until a rescan, and the
       existing scan predates several changes. ([[cms-rescan-gotchas]])
