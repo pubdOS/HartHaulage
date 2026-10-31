@@ -37,7 +37,7 @@ function Clause({ letter, children }) {
 function Card({ children, delay = 0 }) {
   return (
     <AnimatedSection delay={delay}>
-      <div className="bg-charcoal-mid border-l-4 border-pink rounded-r-xl p-8 md:p-10">
+      <div className="bg-[var(--tone-panel)] border-l-4 border-pink rounded-r-xl p-8 md:p-10">
         {children}
       </div>
     </AnimatedSection>
@@ -70,7 +70,7 @@ export default function Terms() {
 
           {/* Intro + download */}
           <AnimatedSection>
-            <div className="bg-charcoal-mid border-l-4 border-pink rounded-r-xl p-8 md:p-10 mb-10">
+            <div className="bg-[var(--tone-panel)] border-l-4 border-pink rounded-r-xl p-8 md:p-10 mb-10">
               <p className="font-body text-gray-300 text-lg leading-relaxed" data-cms="Terms - Intro - Text">
                 {c.terms_intro}
               </p>

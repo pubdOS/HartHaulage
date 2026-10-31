@@ -106,7 +106,7 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {c.team.map((member, i) => (
                 <AnimatedSection key={member.name} delay={i * 80}>
-                  <div className="bg-charcoal-mid border border-charcoal-light hover:border-pink/40 rounded-xl p-7 transition-all duration-300 hover:-translate-y-1 h-full">
+                  <div className="bg-[var(--tone-panel)] border border-charcoal-light hover:border-pink/40 rounded-xl p-7 transition-all duration-300 hover:-translate-y-1 h-full">
                     <div className="w-12 h-12 rounded-full bg-pink/10 border-2 border-pink/30 flex items-center justify-center mb-4">
                       <span className="font-heading font-black text-pink text-lg">
                         {member.name.split(' ').map(n => n[0]).join('')}
@@ -168,7 +168,7 @@ export default function Contact() {
                         onChange={handleChange}
                         placeholder={field.placeholder}
                         data-cms={`Contact - Form - Placeholder ${i + 1}`}
-                        className={`w-full bg-charcoal-black border ${errors[field.name] ? 'border-red-500' : 'border-charcoal-light'} focus:border-pink rounded-lg px-4 py-3 text-white font-body text-sm outline-none transition-colors placeholder-muted`}
+                        className={`w-full bg-[var(--tone-inset)] border ${errors[field.name] ? 'border-red-500' : 'border-charcoal-light'} focus:border-pink rounded-lg px-4 py-3 text-white font-body text-sm outline-none transition-colors placeholder-muted`}
                       />
                       {errors[field.name] && <p className="text-red-400 text-xs mt-1">{errors[field.name]}</p>}
                     </div>
@@ -180,7 +180,7 @@ export default function Contact() {
                       name="service"
                       value={form.service}
                       onChange={handleChange}
-                      className={`w-full bg-charcoal-black border ${errors.service ? 'border-red-500' : 'border-charcoal-light'} focus:border-pink rounded-lg px-4 py-3 text-white font-body text-sm outline-none transition-colors`}
+                      className={`w-full bg-[var(--tone-inset)] border ${errors.service ? 'border-red-500' : 'border-charcoal-light'} focus:border-pink rounded-lg px-4 py-3 text-white font-body text-sm outline-none transition-colors`}
                     >
                       <option value="" data-cms="Contact - Form - Service Placeholder">{c.contact_service_placeholder}</option>
                       {c.contact_services.map((s, i) => (
@@ -199,7 +199,7 @@ export default function Contact() {
                       rows={5}
                       placeholder={c.contact_message_placeholder}
                       data-cms="Contact - Form - Message Placeholder"
-                      className={`w-full bg-charcoal-black border ${errors.message ? 'border-red-500' : 'border-charcoal-light'} focus:border-pink rounded-lg px-4 py-3 text-white font-body text-sm outline-none transition-colors placeholder-muted resize-none`}
+                      className={`w-full bg-[var(--tone-inset)] border ${errors.message ? 'border-red-500' : 'border-charcoal-light'} focus:border-pink rounded-lg px-4 py-3 text-white font-body text-sm outline-none transition-colors placeholder-muted resize-none`}
                     />
                     {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
                   </div>
@@ -225,7 +225,7 @@ export default function Contact() {
               </h2>
               <div className="space-y-6">
                 {c.contact_depots.map((depot, i) => (
-                  <div key={depot.name} className="bg-charcoal-mid border-l-4 border-pink rounded-r-xl p-6">
+                  <div key={depot.name} className="bg-[var(--tone-panel)] border-l-4 border-pink rounded-r-xl p-6">
                     <div className="flex items-center gap-2 mb-3">
                       <MapPin size={16} className="text-pink" />
                       <h3 className="font-heading font-bold uppercase text-white text-lg tracking-wide" data-cms={`Contact - Depots - Name ${i + 1}`}>{depot.name}</h3>
