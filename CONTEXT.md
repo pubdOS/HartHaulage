@@ -6,6 +6,21 @@ Hart Haulage's site (transport/haulage). Live and CMS-wired, but built before th
 current standards, so it is on the **modernisation list** alongside tend-site.
 
 ## Current state
+
+### ▶ 2026-10-31: KIT conversion BUILT on branch `kit` (pushed, NOT merged)
+- Every page except NotFound is `Sections` (move/hide/add from the kit). Tones cycle Hart's three
+  greys by position (`mid`, `dark`, `black` = charcoal-black + diagonal texture), which reproduces
+  every page's current order; CTA bands pinned (`pin="cta"`, own classes). Theme = KIT THEME block
+  in `src/index.css` (Hart has no component classes, so roles carry the site's utilities) +
+  `src/kit/theme.js` (centred, tick marks, numbers `divided` like the stats bar).
+- **Announcement lives in Navbar.jsx, inside the fixed header** (not Layout like the boat club): a
+  strip in the page flow would sit under the fixed nav. Heroes add `--announce-room` (set by a CSS
+  `:has` rule, 0 when empty) to their top padding. Hidden while the phone menu is open.
+- Home hero = HeroPhotos (`home_hero_more`). Canonical bridge + `SmartLink.jsx` came with it.
+- Verified: every page pixel-identical to main at 1280 + 390 (home hero: 525 px off by <=2/255,
+  img-vs-background resampling); every kit type + variant rendered on About in Hart's style,
+  desktop + phone; cms-check strict 0 fails. Scanner: 16 files with fields, far under the cap.
+- **To ship (Lazar's go):** merge `kit` -> main (one production deploy), then a **Merge** rescan.
 - Live: `main`, deployed on Netlify.
 - **In flight: branch `repeater-count-derived` (1 commit, NOT merged).** Converts the
   repeaters to count-derived layout. Reviewed by Lazar 2026-08-23 ("HH looks great").
@@ -83,5 +98,6 @@ real pages 200, stray 404). Lazar pressed "Validate fix" in Search Console. Also
 "Heavy Haulage Auckland | Hart Haulage" and 6 Google listings were published from the admin.
 
 ## Session log (brief, newest first)
+- 2026-10-31: kit conversion built on branch `kit` (pixel-identical, stress-tested), awaiting go.
 - 2026-10-16: real 404s shipped (Search Console fix validated); listings + title published via CMS.
 - 2026-08-23: repeater conversion (held on branch); value drift adopted; CONTEXT created.
