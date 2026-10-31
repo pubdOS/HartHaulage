@@ -9,6 +9,13 @@
   [data-tone="mid"] { @apply bg-charcoal-mid; }
   [data-tone="dark"] { @apply bg-charcoal-dark; }
   [data-tone="black"] { @apply bg-charcoal-black diagonal-texture; }
+  /* What sits on each tone: a panel (card) one grey off it, an inset (a form
+     field) darker than it. Cards and fields use these, never a fixed grey, so a
+     moved section never swallows its own cards. The defaults are the dark
+     tone's, for a piece outside any section. */
+  :root, [data-tone="dark"] { --tone-panel: theme(colors.charcoal.mid); --tone-inset: theme(colors.charcoal.black); }
+  [data-tone="black"] { --tone-panel: theme(colors.charcoal.mid); --tone-inset: theme(colors.charcoal.dark); }
+  [data-tone="mid"] { --tone-panel: theme(colors.charcoal.dark); --tone-inset: theme(colors.charcoal.black); }
 
   /* Room under the fixed header for the announcement strip, while it shows
      (Navbar.jsx). The heroes add --announce-room to their top padding. */
@@ -49,9 +56,7 @@
   .kit-quote { @apply font-body text-white leading-relaxed italic; }
   .kit-quote-lg { @apply font-body text-white text-xl md:text-2xl leading-relaxed italic; }
   .kit-cta-text { @apply font-body text-gray-300; }
-  .kit-card { @apply bg-charcoal-mid border-l-4 border-pink rounded-r-lg p-6; }
-  /* A card on the mid grey drops one shade, as the About accreditations do. */
-  [data-tone="mid"] .kit-card { @apply bg-charcoal-dark; }
+  .kit-card { @apply bg-[var(--tone-panel)] border-l-4 border-pink rounded-r-lg p-6; }
   .kit-card-photo { @apply p-0 border-l-0 border border-charcoal-light rounded-lg; }
   .kit-card-body { @apply p-6; }
   .kit-photo { @apply rounded-lg; }

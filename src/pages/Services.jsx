@@ -62,7 +62,7 @@ export default function Services() {
             {c.services.map((service, i) => {
               const Icon = serviceIcons[i % serviceIcons.length];
               return (
-                <div key={service.title} className="group bg-charcoal-mid border-l-4 border-pink hover:border-pink-dark rounded-r-lg p-7 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink/10 transition-all duration-300 h-full">
+                <div key={service.title} className="group bg-[var(--tone-panel)] border-l-4 border-pink hover:border-pink-dark rounded-r-lg p-7 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink/10 transition-all duration-300 h-full">
                   <div className="flex items-start gap-4">
                     <div className="bg-pink/10 border border-pink/20 rounded-lg p-3 shrink-0">
                       <Icon size={24} className="text-pink" />

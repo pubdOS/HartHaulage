@@ -153,7 +153,7 @@ export default function Home() {
               const Icon = homeServiceIcons[i];
               return (
                 <AnimatedSection key={service.title} delay={i * 80}>
-                  <div className="group bg-charcoal-mid border-l-4 border-pink hover:border-pink-dark rounded-r-lg p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink/10 transition-all duration-300 h-full">
+                  <div className="group bg-[var(--tone-panel)] border-l-4 border-pink hover:border-pink-dark rounded-r-lg p-6 hover:-translate-y-1 hover:shadow-xl hover:shadow-pink/10 transition-all duration-300 h-full">
                     <Icon size={28} className="text-pink mb-4" />
                     <h3 className="font-heading font-bold uppercase text-white text-xl tracking-wide mb-2" data-cms={`Home - Services - Title ${i + 1}`}>{service.title}</h3>
                     <p className="font-body text-muted text-sm leading-relaxed" data-cms={`Home - Services - Desc ${i + 1}`}>{service.desc}</p>

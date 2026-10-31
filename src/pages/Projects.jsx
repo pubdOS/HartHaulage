@@ -68,7 +68,7 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-charcoal-black/30 group-hover:bg-charcoal-black/20 transition-colors duration-300" />
                 </div>
-                <div className="bg-charcoal-mid p-8 md:p-10 flex flex-col justify-center border-l-4 border-pink">
+                <div className="bg-[var(--tone-panel)] p-8 md:p-10 flex flex-col justify-center border-l-4 border-pink">
                   <div className="flex items-center gap-2 mb-3">
                     <MapPin size={14} className="text-pink" />
                     <span data-cms-field="region" className="text-pink font-body text-xs uppercase tracking-widest">{project.region}</span>

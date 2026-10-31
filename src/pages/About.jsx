@@ -105,7 +105,7 @@ export default function About() {
             {c.about_certs.map((cert, i) => {
               const Icon = certIcons[i % certIcons.length];
               return (
-                <div key={cert.title} className="bg-charcoal-dark border border-charcoal-light rounded-xl p-7 flex items-start gap-5">
+                <div key={cert.title} className="bg-[var(--tone-panel)] border border-charcoal-light rounded-xl p-7 flex items-start gap-5">
                   <div className="bg-pink/10 border border-pink/30 rounded-lg p-3 shrink-0">
                     <Icon size={28} className="text-pink" />
                   </div>
@@ -132,7 +132,7 @@ export default function About() {
 
           <div data-cms-repeater="About - Team" data-cms-shape="person" data-cms-min="1" data-cms-recommend="3" data-cms-max="9" data-cms-overflow="wrap" className="repeat-balance [--rb-cols:1] md:[--rb-cols:3] [--rb-gap:2rem] gap-8">
             {c.team.map((member, i) => (
-              <div key={member.name} className="bg-charcoal-mid border border-charcoal-light hover:border-pink/40 rounded-xl p-7 transition-all duration-300 hover:-translate-y-1 h-full">
+              <div key={member.name} className="bg-[var(--tone-panel)] border border-charcoal-light hover:border-pink/40 rounded-xl p-7 transition-all duration-300 hover:-translate-y-1 h-full">
                 <div className="w-14 h-14 rounded-full bg-pink/10 border-2 border-pink/30 flex items-center justify-center mb-5">
                   <span className="font-heading font-black text-pink text-xl">
                     {member.name.split(' ').map(n => n[0]).join('')}

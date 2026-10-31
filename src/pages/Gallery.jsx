@@ -87,7 +87,7 @@ export default function Gallery() {
                   className={`px-5 py-2 font-heading font-bold uppercase tracking-widest text-sm rounded transition-all duration-200 ${
                     activeFilter === f.key
                       ? 'bg-pink text-white'
-                      : 'bg-charcoal-mid border border-charcoal-light text-muted hover:border-pink hover:text-white'
+                      : 'bg-[var(--tone-panel)] border border-charcoal-light text-muted hover:border-pink hover:text-white'
                   }`}
                 >
                   {f.label}
