@@ -3,6 +3,7 @@ import { useInView } from '../hooks/useInView';
 import { ArrowRight, MapPin } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
 import c from '../content.js';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
@@ -24,6 +25,8 @@ export default function Projects() {
       <Seo title={c.projects_seo_title} description={c.projects_seo_description} image={c.projects_hero_image} />
       <span hidden data-cms="Projects - SEO - Page Title">{c.projects_seo_title}</span>
       <span hidden data-cms="Projects - SEO - Meta Description">{c.projects_seo_description}</span>
+      <span hidden data-cms="Projects - Page - Layout">{c.projects_page_layout}</span>
+      <span hidden data-cms="Projects - Page - Kit">{c.projects_page_kit}</span>
 
       <PageHero
         title={c.projects_hero_title}
@@ -40,7 +43,8 @@ export default function Projects() {
         <img data-cms="Projects - Hero - Image" src={c.projects_hero_image} alt="" />
       </div>
 
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Sections layout={c.projects_page_layout} tones={['dark', 'black', 'mid']} page="Projects" kit={c.projects_page_kit}>
+      <Section id="Projects - Projects" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <p className="text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3" data-cms="Projects - Section - Label">{c.projects_section_label}</p>
@@ -80,10 +84,10 @@ export default function Projects() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="bg-charcoal-black diagonal-texture py-20">
+      <Section id="Projects - CTA" pin="cta" className="bg-charcoal-black diagonal-texture py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="font-heading font-black uppercase text-white text-4xl md:text-5xl leading-none mb-4" data-cms="Projects - CTA - Heading">
@@ -100,7 +104,8 @@ export default function Projects() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
+      </Sections>
     </>
   );
 }

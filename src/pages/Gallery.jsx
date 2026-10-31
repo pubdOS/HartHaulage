@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
 import c from '../content.js';
 
 const getAlbums = (p) => Array.isArray(p?.albums) ? p.albums : (p?.tag ? [p.tag] : []);
@@ -56,6 +57,8 @@ export default function Gallery() {
       <Seo title={c.gallery_seo_title} description={c.gallery_seo_description} image={c.gallery_hero_image} />
       <span hidden data-cms="Gallery - SEO - Page Title">{c.gallery_seo_title}</span>
       <span hidden data-cms="Gallery - SEO - Meta Description">{c.gallery_seo_description}</span>
+      <span hidden data-cms="Gallery - Page - Layout">{c.gallery_page_layout}</span>
+      <span hidden data-cms="Gallery - Page - Kit">{c.gallery_page_kit}</span>
 
       <PageHero
         title={c.gallery_hero_title}
@@ -72,7 +75,8 @@ export default function Gallery() {
         <img data-cms="Gallery - Hero - Image" src={c.gallery_hero_image} alt="" />
       </div>
 
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Sections layout={c.gallery_page_layout} tones={['dark', 'black', 'mid']} page="Gallery" kit={c.gallery_page_kit}>
+      <Section id="Gallery - Photos" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filters.length > 1 && (
             <div className="flex flex-wrap gap-3 mb-10">
@@ -120,7 +124,8 @@ export default function Gallery() {
             })}
           </div>
         </div>
-      </section>
+      </Section>
+      </Sections>
 
       <Lightbox
         photos={filtered}

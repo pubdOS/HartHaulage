@@ -1,6 +1,6 @@
 export default function PageHero({ title, subtitle, image, accent, cmsPage }) {
   return (
-    <section className="relative min-h-[45vh] flex items-end pb-16 pt-32 overflow-hidden">
+    <section className="relative min-h-[45vh] flex items-end pb-16 pt-[calc(8rem+var(--announce-room))] overflow-hidden">
       {image && (
         <>
           <div

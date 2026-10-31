@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import Announcement from '../kit/Announcement.jsx';
 import c from '../content.js';
 
 export default function Navbar() {
@@ -30,6 +31,17 @@ export default function Navbar() {
           scrolled ? 'bg-charcoal-dark/95 backdrop-blur-sm shadow-lg shadow-black/40' : 'bg-transparent'
         }`}
       >
+        {/* The announcement strip (shared kit): empty = hidden. It rides inside
+            the fixed header, since a strip in the page flow would sit under it;
+            the heroes make room for it (--announce-room, index.css). Out of the
+            way while the phone menu is open, which starts under the nav row. */}
+        <div hidden={isOpen || undefined}>
+          <Announcement link={c.nav_announcement_link} until={c.nav_announcement_until}>
+            <span className="kit-announce-text" data-cms="Nav - Announcement - Text">{c.nav_announcement}</span>
+          </Announcement>
+        </div>
+        <span hidden data-cms="Nav - Announcement - Link">{c.nav_announcement_link}</span>
+        <span hidden data-cms="Nav - Announcement - Until" data-cms-label="Hide after (NZ time, e.g. 2026-11-01 17:00)">{c.nav_announcement_until}</span>
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link to="/" className="flex items-center gap-3 group">

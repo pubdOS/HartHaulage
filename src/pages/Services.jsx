@@ -3,6 +3,7 @@ import { useInView } from '../hooks/useInView';
 import { Truck, Mountain, Wheat, Anchor, Recycle, Wrench, Route, TreePine, ArrowRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
 import c from '../content.js';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
@@ -26,6 +27,8 @@ export default function Services() {
       <Seo title={c.services_seo_title} description={c.services_seo_description} image={c.services_hero_image} />
       <span hidden data-cms="Services - SEO - Page Title">{c.services_seo_title}</span>
       <span hidden data-cms="Services - SEO - Meta Description">{c.services_seo_description}</span>
+      <span hidden data-cms="Services - Page - Layout">{c.services_page_layout}</span>
+      <span hidden data-cms="Services - Page - Kit">{c.services_page_kit}</span>
 
       <PageHero
         title={c.services_hero_title}
@@ -42,7 +45,8 @@ export default function Services() {
         <img data-cms="Services - Hero - Image" src={c.services_hero_image} alt="" />
       </div>
 
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Sections layout={c.services_page_layout} tones={['dark', 'black', 'mid']} page="Services" kit={c.services_page_kit}>
+      <Section id="Services - Services" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <p className="text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3" data-cms="Services - Section - Label">{c.services_section_label}</p>
@@ -80,10 +84,10 @@ export default function Services() {
             })}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="bg-charcoal-black diagonal-texture py-20">
+      <Section id="Services - CTA" pin="cta" className="bg-charcoal-black diagonal-texture py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="font-heading font-black uppercase text-white text-4xl md:text-5xl leading-none mb-4" data-cms="Services - CTA - Heading">
@@ -100,7 +104,8 @@ export default function Services() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
+      </Sections>
     </>
   );
 }

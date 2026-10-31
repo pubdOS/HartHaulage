@@ -3,6 +3,7 @@ import { Download } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
 import c from '../content.js';
 
 // The downloadable PDF is editable in the CMS (field "Terms - Document - PDF").
@@ -53,6 +54,8 @@ export default function Terms() {
       <Seo title={c.terms_seo_title} description={c.terms_seo_description} />
       <span hidden data-cms="Terms - SEO - Page Title">{c.terms_seo_title}</span>
       <span hidden data-cms="Terms - SEO - Meta Description">{c.terms_seo_description}</span>
+      <span hidden data-cms="Terms - Page - Layout">{c.terms_page_layout}</span>
+      <span hidden data-cms="Terms - Page - Kit">{c.terms_page_kit}</span>
 
       <PageHero
         title="Terms & Conditions"
@@ -61,7 +64,8 @@ export default function Terms() {
         cmsPage="Terms"
       />
 
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Sections layout={c.terms_page_layout} tones={['dark', 'black', 'mid']} page="Terms" kit={c.terms_page_kit}>
+      <Section id="Terms - Content" className="py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Intro + download */}
@@ -172,10 +176,10 @@ export default function Terms() {
 
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="bg-charcoal-black py-16">
+      <Section id="Terms - CTA" pin="cta" className="bg-charcoal-black py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <p className="font-body text-gray-300 mb-6" data-cms="Terms - CTA - Body">{c.terms_cta_body}</p>
@@ -187,7 +191,8 @@ export default function Terms() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
+      </Sections>
     </>
   );
 }

@@ -3,6 +3,84 @@
 @tailwind utilities;
 
 @layer components {
+  /* Section tones (Sections.jsx): backgrounds come from position, cycling the
+     site's three greys (mid, dark, black with the diagonal texture), so moving
+     or hiding a section never leaves two the same side by side. */
+  [data-tone="mid"] { @apply bg-charcoal-mid; }
+  [data-tone="dark"] { @apply bg-charcoal-dark; }
+  [data-tone="black"] { @apply bg-charcoal-black diagonal-texture; }
+
+  /* Room under the fixed header for the announcement strip, while it shows
+     (Navbar.jsx). The heroes add --announce-room to their top padding. */
+  :root { --announce-room: 0px; }
+  :root:has(header .kit-announce:not([hidden]) .kit-announce-text:not(:empty)) { --announce-room: 2.25rem; }
+
+  /* ── KIT THEME ──────────────────────────────────────────────────────────────
+     How the shared kit (src/kit/, synced from sitemog-starter) looks on Hart's
+     site: Barlow Condensed uppercase headings under the pink tracked eyebrow,
+     pink-edged cards one grey off the section, pink and outline buttons. The
+     site has no shared component classes, so each role carries the same
+     utilities as the site's own sections. The one part of the kit a site owns,
+     with src/kit/theme.js. Every role is listed in src/kit/THEME.md; leave none out. */
+  .kit-section { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28; }
+  .kit-numbers { @apply py-12 md:py-12; }
+  .kit-head { --kit-head-gap: 0.75rem; }
+  /* The eyebrow carries its own space below (as on the site's own headings). */
+  .kit-eyebrow + .kit-h2 { @apply mt-0; }
+  .kit-h2 + .kit-intro, .kit-h2 + .kit-text { @apply mt-4; }
+  .kit-h2 + .kit-role { @apply mt-1; }
+  .kit-role + .kit-text { @apply mt-4; }
+  .kit-text + .kit-actions { @apply mt-8; }
+  .kit-cta-text + .kit-actions, .kit-h2 + .kit-actions { @apply mt-8; }
+  .kit-eyebrow { @apply text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3; }
+  .kit-h2 { @apply font-heading font-black uppercase text-white text-4xl md:text-5xl leading-none; }
+  .kit-h3 { @apply font-heading font-bold uppercase text-white text-xl tracking-wide; }
+  .kit-card-title { @apply mb-2; }
+  .kit-h2.kit-person { @apply md:text-4xl; }
+  .kit-intro { @apply font-body text-gray-300; }
+  .kit-text { @apply font-body text-gray-300 leading-relaxed; }
+  .kit-small { @apply font-body text-muted text-sm leading-relaxed; }
+  .kit-meta { @apply font-body text-muted text-xs uppercase tracking-widest; }
+  .kit-accent { @apply text-pink font-body text-xs font-semibold uppercase tracking-widest; }
+  .kit-name { @apply font-heading font-bold uppercase text-white tracking-wide; }
+  .kit-role { @apply text-pink font-body text-sm font-semibold; }
+  .kit-head > .kit-role { @apply text-base; }
+  .kit-step-text { @apply font-body text-muted text-sm leading-relaxed; }
+  .kit-quote { @apply font-body text-white leading-relaxed italic; }
+  .kit-quote-lg { @apply font-body text-white text-xl md:text-2xl leading-relaxed italic; }
+  .kit-cta-text { @apply font-body text-gray-300; }
+  .kit-card { @apply bg-charcoal-mid border-l-4 border-pink rounded-r-lg p-6; }
+  /* A card on the mid grey drops one shade, as the About accreditations do. */
+  [data-tone="mid"] .kit-card { @apply bg-charcoal-dark; }
+  .kit-card-photo { @apply p-0 border-l-0 border border-charcoal-light rounded-lg; }
+  .kit-card-body { @apply p-6; }
+  .kit-photo { @apply rounded-lg; }
+  .kit-tile { @apply rounded-lg border border-charcoal-light; }
+  .kit-logo { @apply opacity-80; }
+  .kit-mark { @apply h-12 w-12 bg-pink/10 border border-pink/30 text-pink; }
+  .kit-step { @apply h-10 w-10 bg-pink font-heading font-black text-lg text-white; }
+  .kit-face { @apply bg-pink/10 border-2 border-pink/30 font-heading font-black text-pink; }
+  .kit-dot { @apply bg-pink; }
+  .kit-timeline { @apply border-charcoal-light; }
+  .kit-file:hover .kit-h3 { @apply text-pink; }
+  .kit-price { @apply font-heading font-black text-pink text-5xl; }
+  .kit-price-row { @apply font-heading font-bold text-white text-xl tracking-wide; }
+  .kit-price-unit { @apply font-body text-sm text-muted; }
+  .kit-package { @apply text-center; }
+  .kit-package-highlight { @apply border-2 border-pink bg-pink/5; }
+  .kit-announce { @apply bg-pink px-5 py-2 text-sm font-body font-semibold tracking-wide text-white; }
+  .kit-announce a:hover .kit-announce-text { @apply underline; }
+  .kit-figure { @apply font-heading font-black text-pink text-4xl lg:text-5xl; }
+  .kit-figure-label { @apply font-body text-muted text-sm mt-1 uppercase tracking-widest; }
+  .kit-numbers-heading { @apply mb-8 font-heading font-black uppercase text-white text-3xl md:text-4xl; }
+  .kit-question { @apply font-heading font-bold uppercase text-white text-xl tracking-wide; }
+  /* The FAQ's + is the accent role too, but needs to read as a control. */
+  .kit-type-faq .kit-accent { @apply text-2xl font-normal leading-none; }
+  .kit-btn-primary { @apply px-7 py-3.5 bg-pink hover:bg-pink-dark text-white font-body font-semibold tracking-wide rounded transition-all duration-200 hover:scale-105; }
+  .kit-btn-secondary { @apply px-7 py-3.5 border-2 border-pink text-pink hover:bg-pink hover:text-white font-body font-semibold tracking-wide rounded transition-all duration-200 hover:scale-105; }
+  .kit-section, .kit-timeline, .kit-faq, .kit-divided { --kit-rule: theme(colors.charcoal.light); }
+  .kit-strip-arrow { --kit-arrow-bg: rgb(28 28 28 / 0.94); --kit-arrow-fg: theme(colors.pink.DEFAULT); }
+
   /* BALANCE — a card row whose incomplete last row CENTRES instead of
      left-anchoring. The item count is the client's to change, so the layout has
      to be derived from it: with a grid, deleting one leaves a hole and adding one
