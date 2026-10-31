@@ -65,11 +65,6 @@ script that fetched CMS content from `http://localhost:3000` — a pre-bridge re
 that could only ever fail in production.
 
 ## Still outstanding
-- [ ] **Kit gap (found 2026-10-31 on Subzone): the site's OWN cards hardcode their grey.** Cards are
-      `bg-charcoal-mid` on dark/black sections and `bg-charcoal-dark` on the mid one (About certs). Since
-      the kit, tones are by position, so a section moved onto `mid` swallows its mid cards (only the pink
-      edge shows). Fix like Subzone: each tone sets `--tone-panel` (mid on dark/black, dark on mid) and the
-      cards use `bg-[var(--tone-panel)]`. Pixel-identical in the default order. Not yet done. (owner: you)
 - [ ] **(Merged as d540d88.) Check the CMS rescan happened:** — three new fields
       (`Footer - Navigation - Heading`, `Terms - Document - Download Label`,
       `Terms - CTA - Body`) will not appear in the dashboard until a rescan, and the
@@ -103,6 +98,7 @@ real pages 200, stray 404). Lazar pressed "Validate fix" in Search Console. Also
 "Heavy Haulage Auckland | Hart Haulage" and 6 Google listings were published from the admin.
 
 ## Session log (brief, newest first)
+- 2026-10-31: cards/fields follow their section's tone (`--tone-panel` / `--tone-inset` per tone; never hardcode a charcoal grey inside a movable section). Pixel-identical; tested with sections moved onto mid. Shipped (dd08b8f).
 - 2026-10-31: kit conversion shipped + rescanned (218 -> 237 fields, none dropped).
 - 2026-10-16: real 404s shipped (Search Console fix validated); listings + title published via CMS.
 - 2026-08-23: repeater conversion (held on branch); value drift adopted; CONTEXT created.
