@@ -65,6 +65,11 @@ script that fetched CMS content from `http://localhost:3000` — a pre-bridge re
 that could only ever fail in production.
 
 ## Still outstanding
+- [ ] **Kit gap (found 2026-10-31 on Subzone): the site's OWN cards hardcode their grey.** Cards are
+      `bg-charcoal-mid` on dark/black sections and `bg-charcoal-dark` on the mid one (About certs). Since
+      the kit, tones are by position, so a section moved onto `mid` swallows its mid cards (only the pink
+      edge shows). Fix like Subzone: each tone sets `--tone-panel` (mid on dark/black, dark on mid) and the
+      cards use `bg-[var(--tone-panel)]`. Pixel-identical in the default order. Not yet done. (owner: you)
 - [ ] **(Merged as d540d88.) Check the CMS rescan happened:** — three new fields
       (`Footer - Navigation - Heading`, `Terms - Document - Download Label`,
       `Terms - CTA - Body`) will not appear in the dashboard until a rescan, and the
