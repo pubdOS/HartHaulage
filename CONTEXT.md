@@ -7,7 +7,7 @@ current standards, so it is on the **modernisation list** alongside tend-site.
 
 ## Current state
 
-### ▶ 2026-10-31: KIT conversion MERGED to main (eef8a7a); Merge rescan still to do
+### ▶ 2026-10-31: KIT conversion SHIPPED (eef8a7a) + Merge-rescanned: 218 -> 237 fields, none dropped
 - Every page except NotFound is `Sections` (move/hide/add from the kit). Tones cycle Hart's three
   greys by position (`mid`, `dark`, `black` = charcoal-black + diagonal texture), which reproduces
   every page's current order; CTA bands pinned (`pin="cta"`, own classes). Theme = KIT THEME block
@@ -20,7 +20,7 @@ current standards, so it is on the **modernisation list** alongside tend-site.
 - Verified: every page pixel-identical to main at 1280 + 390 (home hero: 525 px off by <=2/255,
   img-vs-background resampling); every kit type + variant rendered on About in Hart's style,
   desktop + phone; cms-check strict 0 fails. Scanner: 16 files with fields, far under the cap.
-- **Next:** a **Merge** rescan in the CMS (adds Page - Layout/Kit, Hero - More Photos, Nav - Announcement fields).
+- Rescanned 2026-10-31: 7 Page - Layout + 7 Page - Kit, Hero - More Photos, 3 Nav - Announcement fields. Lazar tested moving/adding on Home in the editor; nothing published.
 - Live: `main`, deployed on Netlify.
 - **In flight: branch `repeater-count-derived` (1 commit, NOT merged).** Converts the
   repeaters to count-derived layout. Reviewed by Lazar 2026-08-23 ("HH looks great").
@@ -98,6 +98,6 @@ real pages 200, stray 404). Lazar pressed "Validate fix" in Search Console. Also
 "Heavy Haulage Auckland | Hart Haulage" and 6 Google listings were published from the admin.
 
 ## Session log (brief, newest first)
-- 2026-10-31: kit conversion merged (pixel-identical, stress-tested); rescan pending.
+- 2026-10-31: kit conversion shipped + rescanned (218 -> 237 fields, none dropped).
 - 2026-10-16: real 404s shipped (Search Console fix validated); listings + title published via CMS.
 - 2026-08-23: repeater conversion (held on branch); value drift adopted; CONTEXT created.
