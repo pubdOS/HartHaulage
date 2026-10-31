@@ -5,6 +5,8 @@ import {
   Recycle, Wrench, Shield, Award, Heart,
 } from 'lucide-react';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
+import HeroPhotos from '../kit/HeroPhotos';
 import c from '../content.js';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
@@ -28,17 +30,27 @@ export default function Home() {
       <Seo title={c.home_seo_title} description={c.home_seo_description} image={c.home_hero_image} />
       <span hidden data-cms="Home - SEO - Page Title">{c.home_seo_title}</span>
       <span hidden data-cms="Home - SEO - Meta Description">{c.home_seo_description}</span>
+      {/* Section order: which sections show, in what order (Sections.jsx). The
+          hero stays put; everything below it can be hidden and moved. */}
+      <span hidden data-cms="Home - Page - Layout">{c.home_page_layout}</span>
+      {/* Sections added from the kit: one JSON field for the page. */}
+      <span hidden data-cms="Home - Page - Kit">{c.home_page_kit}</span>
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center scale-105"
-          style={{ backgroundImage: `url(${c.home_hero_image})` }}
-        />
+        {/* The hero photo, then any added under "More Photos", taking turns
+            (HeroPhotos, shared kit). Each has a hidden companion the CMS edits. */}
+        <HeroPhotos image={c.home_hero_image} more={c.home_hero_more} className="absolute inset-0 scale-105" />
         <img src={c.home_hero_image} data-cms="Home - Hero - Image" alt="" style={{ display: 'none' }} />
+        <div hidden data-cms-repeater="Home - Hero - More Photos" data-cms-shape="media" data-cms-max="5"
+          data-cms-note="These take turns with the hero photo, a few seconds each.">
+          {(c.home_hero_more || []).map((x, i) => (
+            <div key={i}><img data-cms-field="image" src={x.image} alt="" loading="lazy" /></div>
+          ))}
+        </div>
         <div className="absolute inset-0 bg-charcoal-black/80" />
         <div className="absolute inset-0 diagonal-texture" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[calc(8rem+var(--announce-room))] pb-32 md:pt-[calc(10rem+var(--announce-room))] md:pb-40">
           <p className="text-pink font-heading font-bold uppercase tracking-[0.35em] text-sm md:text-base mb-4 animate-[fadeIn_0.8s_ease-out]" data-cms="Home - Hero - Region">
             {c.home_hero_region}
           </p>
@@ -71,8 +83,9 @@ export default function Home() {
         </div>
       </section>
 
+      <Sections layout={c.home_page_layout} tones={['mid', 'dark', 'black']} page="Home" kit={c.home_page_kit}>
       {/* Stats Bar */}
-      <section className="bg-charcoal-mid border-y border-charcoal-light">
+      <Section id="Home - Stats" className="border-y border-charcoal-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div data-cms-repeater="Home - Stats" data-cms-shape="stat"
             data-cms-min="2" data-cms-recommend="4" data-cms-max="8" data-cms-overflow="wrap"
@@ -85,11 +98,11 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* About Snapshot */}
-      <section className="bg-charcoal-dark py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Section id="Home - About">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <AnimatedSection>
               <p className="text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3" data-cms="Home - About - Label">{c.home_about_label}</p>
@@ -123,11 +136,11 @@ export default function Home() {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Services Overview */}
-      <section className="bg-charcoal-black py-20 md:py-28 diagonal-texture">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Section id="Home - Services">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <AnimatedSection className="text-center mb-14">
             <p className="text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3" data-cms="Home - Services - Label">{c.home_services_label}</p>
             <h2 className="font-heading font-black uppercase text-white text-4xl md:text-5xl leading-none" data-cms="Home - Services - Heading">
@@ -159,12 +172,12 @@ export default function Home() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
 
       {/* Why Pink */}
-      <section className="relative bg-charcoal-mid py-20 md:py-28 overflow-hidden">
+      <Section id="Home - Why Pink" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-pink/5" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <AnimatedSection>
             <Heart size={40} className="text-pink fill-pink mx-auto mb-6" />
             <div className="h-px bg-pink w-24 mx-auto mb-8" />
@@ -177,11 +190,11 @@ export default function Home() {
             </p>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
 
       {/* Photo Gallery Strip */}
-      <section className="bg-charcoal-dark py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Section id="Home - Gallery Strip">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <AnimatedSection className="flex items-center justify-between mb-8">
             <h2 className="font-heading font-black uppercase text-white text-3xl md:text-4xl" data-cms="Home - Gallery Strip - Heading">{c.home_gallery_heading}</h2>
             <Link to="/gallery" data-cms="Home - Gallery Strip - Link" className="text-pink font-body font-semibold hover:text-pink-dark transition-colors text-sm">
@@ -211,12 +224,12 @@ export default function Home() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
 
       {/* CTA Banner */}
-      <section className="relative bg-charcoal-black py-20 md:py-28 diagonal-texture overflow-hidden">
+      <Section id="Home - CTA" pin="cta" className="relative bg-charcoal-black diagonal-texture overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-pink/5 to-transparent" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
           <AnimatedSection>
             <h2 className="font-heading font-black uppercase text-white text-4xl md:text-6xl leading-none mb-4" data-cms="Home - CTA - Heading">
               {c.home_cta_heading}
@@ -232,7 +245,8 @@ export default function Home() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
+      </Sections>
     </>
   );
 }

@@ -3,6 +3,7 @@ import { useInView } from '../hooks/useInView';
 import { Shield, Award, Phone, Mail, ArrowRight } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
 import c from '../content.js';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
@@ -26,6 +27,8 @@ export default function About() {
       <Seo title={c.about_seo_title} description={c.about_seo_description} image={c.about_hero_image} />
       <span hidden data-cms="About - SEO - Page Title">{c.about_seo_title}</span>
       <span hidden data-cms="About - SEO - Meta Description">{c.about_seo_description}</span>
+      <span hidden data-cms="About - Page - Layout">{c.about_page_layout}</span>
+      <span hidden data-cms="About - Page - Kit">{c.about_page_kit}</span>
 
       <PageHero
         title={c.about_hero_title}
@@ -43,7 +46,8 @@ export default function About() {
       </div>
 
       {/* Full Story */}
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Sections layout={c.about_page_layout} tones={['dark', 'black', 'mid']} page="About" kit={c.about_page_kit}>
+      <Section id="About - Story" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <AnimatedSection>
@@ -71,10 +75,10 @@ export default function About() {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Mission */}
-      <section className="bg-charcoal-black py-16 diagonal-texture">
+      <Section id="About - Mission" className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="border-2 border-pink/40 bg-pink/5 rounded-xl p-8 md:p-12 text-center">
@@ -85,10 +89,10 @@ export default function About() {
             </div>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
 
       {/* Certifications */}
-      <section className="bg-charcoal-mid py-20">
+      <Section id="About - Certs" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
             <p className="text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3" data-cms="About - Certs - Label">{c.about_certs_label}</p>
@@ -114,10 +118,10 @@ export default function About() {
             })}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Team */}
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Section id="About - Team" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <p className="text-pink font-heading font-bold uppercase tracking-[0.3em] text-sm mb-3" data-cms="About - Team - Label">{c.about_team_label}</p>
@@ -159,10 +163,10 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="bg-charcoal-black diagonal-texture py-20">
+      <Section id="About - CTA" pin="cta" className="bg-charcoal-black diagonal-texture py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="font-heading font-black uppercase text-white text-4xl md:text-5xl leading-none mb-4" data-cms="About - CTA - Heading">
@@ -179,7 +183,8 @@ export default function About() {
             </Link>
           </AnimatedSection>
         </div>
-      </section>
+      </Section>
+      </Sections>
     </>
   );
 }

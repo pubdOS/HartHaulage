@@ -3,6 +3,7 @@ import { useInView } from '../hooks/useInView';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import PageHero from '../components/PageHero';
 import Seo from '../components/Seo';
+import Sections, { Section } from '../components/Sections';
 import c from '../content.js';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {
@@ -75,6 +76,8 @@ export default function Contact() {
       <Seo title={c.contact_seo_title} description={c.contact_seo_description} image={c.contact_hero_image} />
       <span hidden data-cms="Contact - SEO - Page Title">{c.contact_seo_title}</span>
       <span hidden data-cms="Contact - SEO - Meta Description">{c.contact_seo_description}</span>
+      <span hidden data-cms="Contact - Page - Layout">{c.contact_page_layout}</span>
+      <span hidden data-cms="Contact - Page - Kit">{c.contact_page_kit}</span>
 
       <PageHero
         title={c.contact_hero_title}
@@ -91,7 +94,8 @@ export default function Contact() {
         <img data-cms="Contact - Hero - Image" src={c.contact_hero_image} alt="" />
       </div>
 
-      <section className="bg-charcoal-dark py-20 md:py-28">
+      <Sections layout={c.contact_page_layout} tones={['dark', 'black', 'mid']} page="Contact" kit={c.contact_page_kit}>
+      <Section id="Contact - Content" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Team Cards */}
           <AnimatedSection className="mb-16">
@@ -257,7 +261,8 @@ export default function Contact() {
             </AnimatedSection>
           </div>
         </div>
-      </section>
+      </Section>
+      </Sections>
     </>
   );
 }

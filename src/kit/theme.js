@@ -1,0 +1,12 @@
+// Hart's kit theme, the part of the kit that is the site's own (the rest is
+// shared, synced from sitemog-starter). Colours, fonts and spacing are the kit-*
+// roles in src/index.css; this holds what CSS cannot. src/kit/THEME.md.
+export const theme = {
+  // No brand mark: Hart's own icon cards use plain drawn icons, so a tick.
+  Mark: null,
+  // Centred, as the site's section headings are.
+  headingAlign: 'center',
+  cardsHeading: 'center',
+  // Equal cells with a rule between, like the home stats bar.
+  numbers: 'divided',
+}
