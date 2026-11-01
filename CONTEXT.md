@@ -1,5 +1,5 @@
 # HartHaulage — working context
-_Last wrapped: 2026-10-16 · live, CMS-wired_
+_Last wrapped: 2026-11-01 · live, CMS-wired_
 
 ## What this is
 Hart Haulage's site (transport/haulage). Live and CMS-wired, but built before the
@@ -98,6 +98,7 @@ real pages 200, stray 404). Lazar pressed "Validate fix" in Search Console. Also
 "Heavy Haulage Auckland | Hart Haulage" and 6 Google listings were published from the admin.
 
 ## Session log (brief, newest first)
+- 2026-11-01: kit synced (HeroPhotos `fetchpriority` spelling by React version; Hart is the fleet's only React 19 site, so the only one whose build warned). Shipped (aca3eac).
 - 2026-10-31: cards/fields follow their section's tone (`--tone-panel` / `--tone-inset` per tone; never hardcode a charcoal grey inside a movable section). Pixel-identical; tested with sections moved onto mid. Shipped (dd08b8f).
 - 2026-10-31: kit conversion shipped + rescanned (218 -> 237 fields, none dropped).
 - 2026-10-16: real 404s shipped (Search Console fix validated); listings + title published via CMS.
