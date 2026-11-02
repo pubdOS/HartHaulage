@@ -14,9 +14,6 @@ export default {
   // contacts; this is the ONE Google should treat as the business's own, confirmed
   // as Jackson (Auckland) 2026-08-27. Keep it consistent with the Auckland depot
   // fields below — inconsistent NAP across a site weakens local ranking.
-  "phone": "021 344 967",
-  "email": "jackson@harthaulage.co.nz",
-  "address": "125 Fred Taylor Drive, Westgate, Auckland, New Zealand",
   "home_seo_title": "Heavy Haulage Auckland | Hart Haulage",
   "home_seo_description": "Hart Haulage Ltd — cartage and haulage services. Get in touch for a quote.",
   "home_page_layout": "",

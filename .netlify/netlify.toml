@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  # Skip the build when nothing but markdown has changed SINCE THE LAST BUILD.
+  # Netlify treats exit 0 from `ignore` as "nothing to build", and a production
+  # deploy costs 15 credits, so a docs commit should not spend one.
+  #
+  # The baseline is CACHED_COMMIT_REF (the last commit Netlify actually built),
+  # NOT HEAD^. Comparing against HEAD^ only asks "was the newest commit docs?",
+  # so a push of code commits topped by a CONTEXT.md commit (a fast-forward
+  # With NO build cache, Netlify sets CACHED_COMMIT_REF equal to COMMIT_REF (its
+  # docs say so), so a commit is compared with itself and every change looks like
+  # none: that cancelled a real Hart deploy on 2026-09-24. Equal refs therefore mean
+  # "no baseline" and we build.
+  ignore = "[ -n \"$CACHED_COMMIT_REF\" ] && [ \"$CACHED_COMMIT_REF\" != \"$COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ':(exclude)*.md'"
+
+# No SPA fallback. Every real page is prerendered to its own file, so an address
+# that is not one gets dist/404.html with a real 404 status. The old
+# `/* /index.html 200` served the HOME page for any stray address, which Google
+# flagged as soft 404s and "alternate page with proper canonical tag".

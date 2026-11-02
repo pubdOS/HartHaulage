@@ -21,9 +21,15 @@ function localBusiness() {
     '@type': c.schema_type || 'LocalBusiness',
     name: c.company_name,
     url: baseUrl || undefined,
-    telephone: c.phone || undefined,
-    email: c.email || undefined,
-    address: c.address || undefined,
+    // The head office's details as the client sees and edits them in the footer
+    // (the Footer Auckland fields), so Google's copy never falls behind the site.
+    // These used to read separate top-level phone/email/address keys that no CMS
+    // field edited, so a changed number would have stayed old here forever.
+    telephone: c.footer_auckland_phone || undefined,
+    email: c.footer_auckland_email || undefined,
+    address: c.footer_auckland_address
+      ? { '@type': 'PostalAddress', streetAddress: c.footer_auckland_address, addressLocality: 'Auckland', addressCountry: 'NZ' }
+      : undefined,
     image: abs(c.home_hero_image || c.logo),
     logo: abs(c.logo),
     areaServed: c.areas || undefined,
